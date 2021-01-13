@@ -1,0 +1,52 @@
+{% extends "model-page.html" %}
+
+
+{% block content %}
+    <h2 class="text-center">Cadastrar/Alterar - Pet Desaparecido</h2>
+    <br>
+    <form enctype="multipart/form-data" action= 'submit', method= 'POST'>{% csrf_token %}
+        <div class="container">
+            <input type="number" class="form-control" name="pet_id" value="{{ pet.id }}" hidden>
+            
+            <div class="form-group col-md-8">
+                <label for='email'>E-mail</label>
+                <input class="form-control" name="email" type="text" placeholder="exemplo@email.com" value="{{ pet.email }}">
+            </div>
+            <div class="form-group col-md-8">
+                <label for="phone">Telefone:</label>
+                <input type="tel" class="form-control" name="phone" value="{{ pet.phone }}">
+            </div>   
+            <div class="form-group col-md-8">
+                <label for="city">Cidade</label>
+                <input class="form-control" name="city" type="text" placeholder="Cidade que foi visto pela ultima vez" value="{{ pet.city }}">
+            </div>
+            <div class="form-group col-md-8">
+                <label for="district">Bairro</label>
+                <input class="form-control" name="district" type="text" placeholder="Bairro que foi visto pela ultima vez" value="{{ pet.district }}">
+            </div>
+            <div class="form-group col-md-8">
+                <label for="breed">Raça</label>
+                <input class="form-control" name="breed" placeholder=" Raça do animal" type="text" value="{{ pet.breed }}" >
+            </div>
+            <div class="form-group col-md-8">
+                <label for="description">Descrição</label>
+                <textarea class="form-control" rows="5" name="description" 
+                placeholder="Breve descrição do animal(nome pelo qual atende , porte, cor de pelo...etc)
+                Outras opções de contato(nome no Facebook,instagram...etc)">{{ pet.description }}</textarea>  
+                <div class="form-group col-md-8">
+                    <a href="/media/{{ pet.photo }}" target="_blank">Foto atual</a>
+                    <input type="file" class="form-control-file border" name="file" accept="image/*">
+                </div>          
+                <button type="submit" class="btn btn-primary">
+                    {% if pet %}
+                        Alterar
+                    {% else %}
+                        Cadastrar
+                    {% endif %}
+                </button>
+            </div>
+        </div>
+    </form>
+    <br>
+
+{% endblock %}
