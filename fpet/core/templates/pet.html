@@ -49,8 +49,15 @@
                     </a>
                         <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal_confirm">Excluir</button>
                 {% endif %}
+                {% if request.user != pet.user %}
+                    <a href="/pet/euvi/? id={{ pet.id }}">
+                        <button style="margin-left: 60px; background-color:#d19f3b" type="button" class="btn btn-primary">Eu vi!
+                        </button>
+                    </a>
+                {% endif %}
             </div>
         </div>
-    </div>  
+    </div>
+
     <br>
 {% endblock %}

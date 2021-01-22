@@ -4,7 +4,7 @@
 <style>
     .polaroid{
         width: 250px;
-        box-shadow: 5px 5px 8px #2a9d8f, 10px 10px 8px #dc2f02, 15px 15px 8px #fca311;
+        box-shadow: 5px 5px 8px #2a9d8f, 10px 10px 8px #dc6f02, 15px 15px 8px #f7b03b;
         text-align: center;
         color:#dc2f02;
         font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
@@ -22,7 +22,9 @@
             <div class="col-sm-12 col-md-6 col-lg-4" style="margin-top:25px">
                 <a href="../detail/{{ p.id }}">
                     <div class="polaroid ml-5" >
-                        <img src="{{ p.photo.url }}" alt="Norway" style="width: 100%;">
+                        {% if p.photo %}
+                            <img src="{{ p.photo.url }}" alt="Norway" style="width: 100%;">
+                        {% endif %}
                         <div class="conteiner">
                             <p>{{ p.breed }}</p>
                             <p>{{ p.city }}</p>
