@@ -3,13 +3,33 @@ from django.views.decorators.csrf import csrf_protect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from .models import Pet
+from .models import Pet, Euvi
+
 
 
 
 @login_required(login_url = '/login/')
 def register_pet(request):
     return render(request, 'register-pet.html')
+
+@login_required(login_url = '/login/')
+def euvi_pet(request):
+    return render(request, 'euvi.html')
+
+@login_required(login_url = '/login/')
+
+def set_euvi(request):
+    city = request.POST.get('city')
+    district = request.POST.get('district')
+    description = request.POST.get('description')
+    phone = request.POST.get('phone')
+    photo = request.FILES.get('file')
+    user = request.user
+    euvi = Euvi.objects.create(city = city, district = district, description = description,
+                            phone = phone, photo = photo, user = user)
+    url = '/pet/euvi/{}/'.format(euvi.id)
+    return redirect(url)
+
 
 @login_required(login_url = '/login/')
 def set_pet(request):

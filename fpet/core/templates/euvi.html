@@ -1,0 +1,36 @@
+{% extends "model-page.html" %}
+
+{% block content %}
+    <h2 class="text-center">Enviar para o Usuário - Pet Encontrado!</h2>
+    <br>
+    <form enctype="multipart/form-data" action= 'submit', method= 'POST'>{% csrf_token %}
+        <div class="container">
+            <input type="number" class="form-control" name="pet_id" value="{{ pet.id }}" hidden>
+
+            <div class="form-group col-md-8">
+                <label for="city">Cidade</label>
+                <input class="form-control" name="city" type="text" placeholder="Cidade que foi visto pela ultima vez" value="{{ pet.city }}">
+            </div>
+            <div class="form-group col-md-8">
+                <label for="district">Último local</label>
+                <input class="form-control" name="district" type="text" placeholder="Rua e Bairro que foi visto pela ultima vez" value="{{ pet.district }}">
+            </div>
+            <div class="form-group col-md-8">
+                <label for="breed">Raça</label>
+                <input class="form-control" name="breed" placeholder=" Raça do animal encontrado" type="text" value="{{ pet.breed }}" >
+            </div>
+            <div class="form-group col-md-8">
+                <label for="description">Descrição</label>
+                <textarea class="form-control" rows="5" name="description"
+                placeholder="Breve descrição do animal(porte do animal, cor de pelo, tipo de pelo, como foi encontrado, onde está atualmente (em casa, ainda na rua...), se foi resgatado...etc)">{{ pet.description }}</textarea>
+                <div class="form-group col-md-8">
+                    <a href="/media/{{ pet.photo }}" target="_blank">Foto do pet visto</a>
+                    <input type="file" class="form-control-file border" name="file" accept="image/*">
+                </div>
+                <button style="background-color=#d19f3b" type="submit" class="btn btn-primary">Enviar para o usuário</button>
+            </div>
+        </div>
+    </form>
+    <br>
+
+{% endblock %}
