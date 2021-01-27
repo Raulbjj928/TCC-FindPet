@@ -24,9 +24,12 @@
                     <div class="polaroid ml-5" >
                         {% if p.photo %}
                             <img src="{{ p.photo.url }}" alt="Norway" style="width: 100%;">
+
                         {% endif %}
                         <div class="conteiner">
                             <p>{{ p.breed }}</p>
+                            <h5>Atende por </h5>
+                            <p>{{ p.name_pet }}</p>
                             <p>{{ p.city }}</p>
                         </div>
                     </div>

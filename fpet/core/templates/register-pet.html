@@ -6,15 +6,23 @@
     <br>
     <form enctype="multipart/form-data" action= 'submit', method= 'POST'>{% csrf_token %}
         <div class="container">
-            <input type="number" class="form-control" name="pet_id" value="{{ pet.id }}" hidden>
-            
+            <input type="number" class="form-control" name="pet-id" value="{{ pet.id }}" hidden>
             <div class="form-group col-md-8">
-                <label for='email'>E-mail</label>
+                <label for="owner">Nome do dono :</label>
+                <input class="form-control" name="owner" type="text" placeholder="Nome do dono do pet" value="{{ pet.owner }}">
+            </div>
+            <div class="form-group col-md-8">
+                <label for="owner">Nome do pet :</label>
+                <input class="form-control" name="name_pet" type="text" placeholder="Nome pelo qual o pet atende" value="{{ pet.name_pet }}">
+            </div>
+                       
+            <div class="form-group col-md-8">
+                <label for='email'>E-mail:</label>
                 <input class="form-control" name="email" type="text" placeholder="exemplo@email.com" value="{{ pet.email }}">
             </div>
             <div class="form-group col-md-8">
                 <label for="phone">Telefone:</label>
-                <input type="tel" class="form-control" name="phone" value="{{ pet.phone }}">
+                <input type="tel" class="form-control" name="phone" placeholder="Telefone com DDD" value="{{ pet.phone }}">
             </div>   
             <div class="form-group col-md-8">
                 <label for="city">Cidade</label>
@@ -31,7 +39,7 @@
             <div class="form-group col-md-8">
                 <label for="description">Descrição</label>
                 <textarea class="form-control" rows="5" name="description" 
-                placeholder="Breve descrição do animal(nome pelo qual atende , porte, cor de pelo...etc)
+                placeholder="Breve descrição do animal(porte, cor de pelo...etc)
                 Outras opções de contato(nome no Facebook,instagram...etc)">{{ pet.description }}</textarea>  
                 <div class="form-group col-md-8">
                     <a href="/media/{{ pet.photo }}" target="_blank">Foto atual</a>

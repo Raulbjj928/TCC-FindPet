@@ -16,7 +16,7 @@
 </head>
 
 <body class="d-flex flex-column">
-  <div class="sidenav">
+  <div class="sidenav" >
          <div class="login-main-text">
             <h1 style="text-align:center;">FIND PET<h1><h4 style="text-align:center;">Pet feliz é Pet encontrado...</h4>  
          </div>
@@ -38,7 +38,9 @@
                           <div class="alert alert-danger">{{ message }}</div>
                       {% endfor %}
                   {% endif %}
-                  <button type="submit" class="btn btn-green">Login</button>                 
+                  <button type="submit" class="btn btn-green">Login</button>
+                  <a href="{% url 'register' %}" style="margin-left: 180px; ">Registre-se!</a>
+                                   
                </form>
             </div>
          </div>
@@ -117,7 +119,7 @@
             transition-duration: 0.4s;
         }
         .btn-green:hover {
-            background-color: #fca311 !important;
+            background-color: #11fc19 !important;
             color: #fff;
         }
     </style>

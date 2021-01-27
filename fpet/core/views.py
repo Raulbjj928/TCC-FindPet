@@ -10,14 +10,19 @@ from .models import Pet, Euvi
 
 @login_required(login_url = '/login/')
 def register_pet(request):
+    pet_id = request.GET.get('id')
+    if pet_id:
+        pet = Pet.objects.get(id=pet_id)
+        if pet.user == request.user:
+            return render(request, 'register-pet.html', {'pet':pet})
     return render(request, 'register-pet.html')
+
 
 @login_required(login_url = '/login/')
 def euvi_pet(request):
     return render(request, 'euvi.html')
 
 @login_required(login_url = '/login/')
-
 def set_euvi(request):
     city = request.POST.get('city')
     district = request.POST.get('district')
@@ -33,6 +38,8 @@ def set_euvi(request):
 
 @login_required(login_url = '/login/')
 def set_pet(request):
+    name_pet = request.POST.get('name_pet')
+    owner = request.POST.get('owner')
     city = request.POST.get('city')
     district = request.POST.get('district')
     description = request.POST.get('description')
@@ -40,16 +47,33 @@ def set_pet(request):
     phone = request.POST.get('phone')
     email = request.POST.get('email')
     photo = request.FILES.get('file')
+    pet_id = request.POST.get('pet-id')
     user = request.user
-    pet = Pet.objects.create(city = city, district = district, description = description, breed = breed, 
-                            phone = phone, email = email, photo = photo, user = user)
+    if pet_id:
+        pet = Pet.objects.get(id=pet_id)
+        if user == pet.user:
+            pet.name_pet = name_pet
+            pet.owner = owner
+            pet.city = city
+            pet.district = district
+            pet.description = description
+            pet.breed = breed
+            pet.phone = phone
+            pet.email = email
+            if photo:
+                pet.photo = photo
+            pet.save()            
+    else:
+        pet = Pet.objects.create(name_pet = name_pet , owner = owner, city = city, district = district, description = description, breed = breed, 
+                                phone = phone, email = email, photo = photo,  user = user)
     url = '/pet/detail/{}/'.format(pet.id)
     return redirect(url)
 
 @login_required(login_url = '/login/')
 def delete_pet(request, id):
     pet = Pet.objects.get(id=id)
-    pet.delete()
+    if pet.user == request.user:
+        pet.delete()
     return redirect('/')
 
 

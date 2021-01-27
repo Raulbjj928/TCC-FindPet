@@ -1,0 +1,64 @@
+<head>
+    <title>FIND PET</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  
+      
+    <style>
+       
+        .jumbotron.header{
+          background-color: #dc2f02;
+          color: #eae2b7;
+          background-image: linear-gradient(#f2d288, #dc2f02);
+        }
+  
+    </style>
+    <div class="jumbotron header text-center" style="margin-bottom: 0px;">
+      <h1 style="font: size 7;">FIND PET</h1>
+      <P>Pet feliz é Pet encontrado...</P>
+    </div>
+  
+    <nav class="navbar navbar-expand-sm nav justify-content-center sticky-top "
+     style="background-color:#5bb1a7 ; font-size:x-large;">
+      <a class="navbar-brand" href="{% url 'login' %}" style="color:#f29a0d; font-size:xx-large ">Find Pet</a>
+      <ul class="navbar-nav ">
+        <li class="nav-item ">
+          <a class="nav-link " href="{% url 'login' %}" style="color:white;">Voltar ao login</a>
+        </li>
+      </ul>
+    </nav>
+  
+  
+  
+    
+  
+</head>
+
+
+<style>
+    label, input {
+        display: block;
+    }
+    span.helptext {
+        display: none;
+    }
+</style>
+
+<h1 style="text-align:center">REGISTRO DE USUÁRIO</h1>
+
+{% block content %}
+{% endblock %}
+<footer>
+    <div class="jumbotron footer text-center" style="background-color: #006466;
+                                                color: #ffc6da;  height: 150px; 
+                                                margin-bottom: 0;">
+        <p style="margin-top:-30px">Find Pet</p>
+        <p>Developed by</p>
+        <p>Davy, Georgia, Isadora, Jéssica and Raul.  </p>
+
+    </div>
+</footer>

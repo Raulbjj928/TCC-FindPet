@@ -2,7 +2,10 @@ from django.db import models
 from django.contrib.auth.models import User
 
 # Create your models here.
-class Pet(models.Model):
+class Pet(models.Model):#dados do pet desaparecido
+
+    owner = models.CharField(max_length = 100, null=True)
+    name_pet = models.CharField(max_length = 100, null=True)
     city = models.CharField(max_length = 100)
     district = models.CharField(max_length = 100)
     description = models.TextField()
@@ -22,8 +25,10 @@ class Pet(models.Model):
 
 
 class Euvi(models.Model): #dados do usuario que viu o pet
-    city = models.CharField(max_length = 100)
-    district = models.CharField(max_length = 100)
+
+    name = models.CharField(max_length = 100, null=True)
+    city = models.CharField(max_length = 100, null=True)
+    district = models.CharField(max_length = 100, null=True)
     email = models.EmailField()
     phone = models.CharField(max_length=11, null=True)
     active = models.BooleanField(default = True)
